@@ -1,0 +1,21 @@
+{
+  "name": "angular-dygraphs",
+  "homepage": "https://github.com/sandrotaje/angular-dygraphs",
+  "authors": [
+    "Sandro Tajè <sandro.taje@holonix.it>"
+  ],
+  "description": "Angular Dygraphs binding",
+  "main": "angular-dygraphs.js",
+  "keywords": [
+    "Angular",
+    "Dygraphs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
