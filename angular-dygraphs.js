@@ -37,7 +37,7 @@ angular.module("angular-dygraphs", [])
                     graph && graph.destroy();
                     if (scope.data && scope.data.length > 0) {
                         graph = new Dygraph(element[0], scope.data, scope.options);
-                        ctrl.toggleDygraph(attr.id, graph);
+                        ctrl && ctrl.toggleDygraph(attr.id, graph);
                         resize();
                     }
                 }, true);
