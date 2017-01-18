@@ -1,5 +1,5 @@
 angular.module("angular-dygraphs", [])
-    .directive("dygraphs", function () {
+    .directive("dygraphs", function ($timeout) {
         return {
             restrict: "A",
             scope: {
@@ -7,7 +7,7 @@ angular.module("angular-dygraphs", [])
                 options: "=?",
                 synchronize: "=?"
             },
-            require: '?dygraphSynchronize',
+            require: '?dygraphsSynchronize',
             link: function (scope, element, attr, ctrl) {
                 var graph = null;
 
@@ -16,20 +16,19 @@ angular.module("angular-dygraphs", [])
                 }
 
                 function resize() {
-                    var parent = element.parent()[0]; 
+                    var parent = element.parent()[0];
                     var compStyle = window.getComputedStyle(parent);
                     var width = fromCssToNum(compStyle.width);
                     var height = fromCssToNum(compStyle.height);
                     var vertPadding = fromCssToNum(compStyle.paddingTop) + fromCssToNum(compStyle.paddingBottom);
                     var horPadding = fromCssToNum(compStyle.paddingLeft) + fromCssToNum(compStyle.paddingRight);
-
                     graph && graph.resize(width - horPadding, height - vertPadding);
                 }
 
-                scope.$watch(function() {
-                    var parent = element.parent()[0]; 
-                    return [parent.offsetWidth, parent.offsetHeight].join('x'); 
-                }, function() {
+                scope.$watch(function () {
+                    var parent = element.parent()[0];
+                    return [parent.offsetWidth, parent.offsetHeight].join('x');
+                }, function () {
                     resize();
                 })
 
@@ -41,13 +40,14 @@ angular.module("angular-dygraphs", [])
                         resize();
                     }
                 }, true);
+
                 scope.$watch('options', function () {
                     graph && graph.updateOptions(scope.options);
                 }, true);
             }
         };
     })
-    .directive("dygraphSynchronize", function () {
+    .directive("dygraphsSynchronize", function () {
         return {
             restrict: "A",
             controller: function ($scope) {
@@ -56,16 +56,16 @@ angular.module("angular-dygraphs", [])
                 ctrl.sync = null;
                 ctrl.syncMap = {};
 
-                ctrl.toggleDygraph = function(id, d) {
+                ctrl.toggleDygraph = function (id, d) {
                     if (ctrl.sync) {
                         try {
                             ctrl.sync.detach();
-                        } catch (e){};
+                        } catch (e) { };
                     }
 
 
                     ctrl.syncMap[id] = d;
-                    var syncList = Object.keys(ctrl.syncMap).map(function(el) {
+                    var syncList = Object.keys(ctrl.syncMap).map(function (el) {
                         return ctrl.syncMap[el];
                     });
                     if (syncList.length > 1) {
