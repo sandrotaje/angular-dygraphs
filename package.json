@@ -1,0 +1,19 @@
+{
+  "name": "angular-dygraphs",
+  "version": "1.0.0",
+  "description": "Angular dygraphs binding",
+  "main": "angular-dygraphs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandrotaje/angular-dygraphs.git"
+  },
+  "author": "Sandro Tajè",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandrotaje/angular-dygraphs/issues"
+  },
+  "homepage": "https://github.com/sandrotaje/angular-dygraphs#readme"
+}

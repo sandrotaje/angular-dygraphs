@@ -7,7 +7,7 @@ angular.module("angular-dygraphs", [])
                 options: "=?",
                 synchronize: "=?"
             },
-            require: '?dygraphsSynchronize',
+            require: '?^^dygraphsSynchronize',
             link: function (scope, element, attr, ctrl) {
                 var graph = null;
 
