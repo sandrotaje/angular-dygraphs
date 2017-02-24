@@ -1,6 +1,6 @@
 {
   "name": "angular-dygraphs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular dygraphs binding",
   "main": "angular-dygraphs.js",
   "scripts": {
