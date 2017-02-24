@@ -1,5 +1,5 @@
 angular.module("angular-dygraphs", [])
-    .directive("dygraphs", function ($timeout) {
+    .directive("dygraphs", ['$timeout', function ($timeout) {
         return {
             restrict: "A",
             scope: {
@@ -46,11 +46,11 @@ angular.module("angular-dygraphs", [])
                 }, true);
             }
         };
-    })
+    }])
     .directive("dygraphsSynchronize", function () {
         return {
             restrict: "A",
-            controller: function ($scope) {
+            controller: ['$scope', function ($scope) {
 
                 var ctrl = this;
                 ctrl.sync = null;
@@ -75,7 +75,7 @@ angular.module("angular-dygraphs", [])
                         });
                     }
                 }
-            }
+            }]
         };
     })
     ;
